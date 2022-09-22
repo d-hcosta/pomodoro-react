@@ -1,6 +1,8 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useContext } from 'react';
+import { PomodoroContext } from "../context/PomodoroContext"
 import { hoursFormatter } from '../utils/hoursFormatter';
 import { useInterval } from '../hooks/useInterval';
+
 
 import { Button } from './button';
 import { Timer } from './timer';
@@ -29,6 +31,8 @@ export function PomodoroTimer(props: Props): JSX.Element {
     const [pomodorosCounting, setPomodorosCounting] = useState(0);
     const [fullWorkingTime, setFullWorkingTime] = useState(0);
     const [completedCycles, setCompletedCycles] = useState(0);
+
+    const { steps, setSteps } = useContext(PomodoroContext);
 
     useInterval(() => {
         setMainTime(mainTime - 1);
@@ -69,6 +73,11 @@ export function PomodoroTimer(props: Props): JSX.Element {
         props.shortRestTime
     ]);
 
+    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.preventDefault();
+        setSteps(steps - 1);
+    }
+
     const handlePause = () => {
         setTimeCounting(!timeCounting)
     }
@@ -105,8 +114,9 @@ export function PomodoroTimer(props: Props): JSX.Element {
 
     return (
         <div className='pomodoro'>
-            <h2>You are: {working ? 'Working' : 'Resting'}</h2>
-
+            <button onClick={handleClick}>Settings</button>
+            {/* <h2>You are: {working ? 'Working' : 'Resting'}</h2> */}
+            
             <Timer mainTime={mainTime} />
 
             <div className="controls">

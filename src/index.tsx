@@ -3,6 +3,7 @@ import React from 'react';
 import App from './App';
 
 import './index.scss';
+import { PomodoroContextProvider } from './context/PomodoroContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,6 +11,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <PomodoroContextProvider>
+      <App />
+    </PomodoroContextProvider>
   </React.StrictMode>
 );
