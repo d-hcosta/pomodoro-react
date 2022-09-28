@@ -6,3 +6,8 @@ export function secondsFormatter(seconds: number): string {
 
     return `${min}:${sec}`
 }
+
+export function secondsToMin(seconds: number) {
+    const minutes = seconds * 60
+    return minutes
+}

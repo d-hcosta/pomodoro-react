@@ -22,7 +22,7 @@ body {
   justify-content: center;
   min-height: 98vh;
   // background: #272a55;
-  background: radial-gradient(circle,#1e2140 0,#151932 65%);
+  background: radial-gradient(circle, #1e2140 0, #151932 65%);
 
   a {
     color: #999bad;
@@ -62,12 +62,16 @@ body {
       display: flex;
       align-items: center;
       gap: 5px;
-      
+
     }
 
     .details {
       margin: 20px 0;
     }
+  }
+
+  small {
+    padding-top: 0.5em;
   }
 }
 
@@ -120,7 +124,7 @@ body {
       display: flex;
       align-items: center;
       flex-direction: column;
-      
+
       small {
         padding-top: 10px;
       }

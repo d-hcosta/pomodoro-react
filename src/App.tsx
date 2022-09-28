@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { FormContainer } from "./components/formContainer";
 import { PomodoroTimer } from "./components/pomodoroTimer";
 import { PomodoroContext } from "./context/PomodoroContext"
+import { secondsFormatter, secondsToMin } from "./utils/secondsFormatter";
 
 function App(): JSX.Element {
   const { pomodoroTime, shortRest, longRest, steps } = useContext(PomodoroContext);
@@ -14,9 +15,9 @@ function App(): JSX.Element {
         }
         case 2: {
           return <PomodoroTimer
-              pomodoroTime={pomodoroTime}
-              shortRestTime={shortRest}
-              longRestTime={longRest}
+              pomodoroTime={secondsToMin(pomodoroTime)}
+              shortRestTime={secondsToMin(shortRest)}
+              longRestTime={secondsToMin(longRest)}
               cycles={4}
             />
         }
@@ -30,7 +31,8 @@ function App(): JSX.Element {
         
         {createRenders()}
 
-        <small><br />Made by <a href='https://www.linkedin.com/in/diegohoc/'>Vrag.</a></small>
+        <small><br />What is <a href='https://en.wikipedia.org/wiki/Pomodoro_Technique'>Pomodoro Technique?</a></small>
+        <small>Made by <a href='https://www.linkedin.com/in/diegohoc/'>Vrag.</a></small>
       </div>
   );
 }
